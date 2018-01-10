@@ -9,7 +9,7 @@ public interface IBankAccountActions {
 	
 	public final static String ACCOUNT_BALANCE_INSUFFICIENT_FOR_SUCH_WITHDRAW = "Account balance insufficient for such withdraw";
 	public final static String ACCOUNT_BALANCE_INSUFFICIENT_TO_WITHDRAW_ALL_SAVINGS = "Account balance insufficient to withdraw all savings";
-
+	public final static double ZERO = 0.00;
 	
 	/**
 	 * 
