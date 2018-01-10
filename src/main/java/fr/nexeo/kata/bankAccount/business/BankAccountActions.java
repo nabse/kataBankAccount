@@ -35,12 +35,12 @@ public class BankAccountActions implements IBankAccountActions{
 	 * @throws UnauthorizedAmountException 
 	 */
 	public void withdrawAll(BankAccount account, Date date) throws UnauthorizedAmountException {
-		if(account.getBalance() < 0) {
+		if(account.getBalance() < ZERO) {
 			throw new UnauthorizedAmountException("ACCOUNT_BALANCE_INSUFFICIENT_TO_WITHDRAW_ALL_SAVINGS");
 		}
 		Operation operation = new WithdrawOperation(account.getBalance(), date);
 		account.getOperations().add(operation);
-		account.setBalance(0.00);
+		account.setBalance(ZERO);
 	}
 
 	/**
