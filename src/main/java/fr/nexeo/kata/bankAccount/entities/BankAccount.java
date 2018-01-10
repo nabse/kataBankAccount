@@ -41,5 +41,4 @@ public class BankAccount {
 	public void setOperations(List<Operation> operations) {
 		this.operations = operations;
 	}
-	
 }
