@@ -18,10 +18,12 @@ import fr.nexeo.kata.bankAccount.exceptions.UnauthorizedAmountException;
 public class BankAccountShould {
 	
 	private static BankAccount account = new BankAccount();
+	private static List<Operation> operations = new ArrayList<Operation>();
 	private static double delta_double = 0.01;
 	
 	static {
 		account.setOverdraft(100.00);
+		account.setOperations(operations);
 	}
 	
 	@Test
