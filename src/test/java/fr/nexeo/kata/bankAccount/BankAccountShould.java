@@ -25,7 +25,7 @@ public class BankAccountShould {
 	}
 	
 	@Test
-	public void should_make_deposit_given_amount_and_date() {
+	public void make_deposit_given_amount_and_date() {
 		//Given
 		double amount = 20.00;
 		account.setBalance(33.90);
@@ -35,7 +35,7 @@ public class BankAccountShould {
 		IBankAccountActions accountActions = new BankAccountActions();
 		accountActions.deposit(account, amount, date);
 		
-		//Arrange
+		//Then
 		double expectedResult = 53.90;
 		double actualResult = account.getBalance();
 		assertEquals(expectedResult, actualResult, delta_double);
@@ -43,7 +43,7 @@ public class BankAccountShould {
 	
 	
 	@Test
-	public void should_retrieve_some_savings_given_amount_and_date() throws UnauthorizedAmountException {
+	public void retrieve_some_savings_given_amount_and_date() throws UnauthorizedAmountException {
 		//Given
 		double amount = 20.00;
 		account.setBalance(33.00);
@@ -53,14 +53,14 @@ public class BankAccountShould {
 		IBankAccountActions accountActions = new BankAccountActions();
 		accountActions.withdraw(account, amount, date);
 		
-		//Arrange
+		//Then
 		double expectedResult = 13.00;
 		double actualResult = account.getBalance();
 		assertEquals(expectedResult, actualResult, delta_double);
 	}
 	
 	@Test(expected = UnauthorizedAmountException.class)
-	public void should_throw_exception_following_withdraw_attempt_under_authorized_overdraft() throws UnauthorizedAmountException {
+	public void throw_exception_following_withdraw_attempt_under_authorized_overdraft() throws UnauthorizedAmountException {
 		//Given
 		double amount = 120.00;
 		account.setBalance(10.00);
@@ -72,7 +72,7 @@ public class BankAccountShould {
 	}
 	
 	@Test
-	public void should_retrieve_all_savings() throws UnauthorizedAmountException {
+	public void retrieve_all_savings() throws UnauthorizedAmountException {
 		//Given
 		Date date = new Date();
 		account.setBalance(500.00);
@@ -80,14 +80,14 @@ public class BankAccountShould {
 		IBankAccountActions accountActions = new BankAccountActions();
 		accountActions.withdrawAll(account, date);
 		
-		//Arrange
+		//Then
 		double expectedResult = 0.00;
 		double actualResult = account.getBalance();
 		assertEquals(expectedResult, actualResult, delta_double);
 	}
 	
 	@Test(expected = UnauthorizedAmountException.class)
-	public void should_throw_exception_following_withdrawAll_attempt_under_authorized_overdraft() throws UnauthorizedAmountException {
+	public void throw_exception_following_withdrawAll_attempt_under_authorized_overdraft() throws UnauthorizedAmountException {
 		//Given
 		account.setBalance(-10.00);
 		Date date = new Date();
@@ -98,7 +98,7 @@ public class BankAccountShould {
 	}
 	
 	@Test
-	public void should_check_operations_history() {
+	public void check_operations_history() {
 		//Given
 		List<Operation> operations = new ArrayList<Operation>();
 		
@@ -114,7 +114,7 @@ public class BankAccountShould {
 		//When
 		account.setOperations(operations);
 		
-		//Assert
+		//Then
 		assertEquals(account.getOperations(), operations);
 	}
 }
